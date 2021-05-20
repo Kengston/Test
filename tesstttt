@@ -1,0 +1,38 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>find weather</title>
+    <script src="eel.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="icon" type ="image/png" href="weather-icon.png">
+</head>
+<body>
+<div class="header">
+    <img src="weather-icon.png" height="60px">
+    <h2>find weather</h2>
+</div>
+<div class="form">
+    <form>
+        <input id='location' class="enter" type="text" placeholder="Введите название города" value="москва">
+    </form>
+</div>
+<div class="butt">
+    <button id='show'>Найти</button>
+</div>
+<div id="info"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    async function display_weather(){
+        let place = document.getElementById('location').value;
+
+        let res = await eel.get_weather(place)();
+        document.getElementById('info').innerHTML = res;
+        }
+        jQuery('#show').on('click',function(){
+            //
+            display_weather();
+        });
+    </script>
+</body>
+</html>
